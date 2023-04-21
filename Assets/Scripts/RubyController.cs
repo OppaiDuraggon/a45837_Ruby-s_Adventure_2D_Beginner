@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RubyController : MonoBehaviour
+﻿public class RubyController : MonoBehaviour
 {
     public float speed = 3.0f;
     
@@ -31,6 +31,7 @@ public class RubyController : MonoBehaviour
         animator = GetComponent<Animator>();
         
         currentHealth = maxHealth;
+        
     }
 
     // Update is called once per frame
@@ -85,7 +86,8 @@ public class RubyController : MonoBehaviour
         }
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+        
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
     
     void Launch()
